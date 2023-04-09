@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="#">WebApi</a>
+      <ul *ngIf="loggedIn()" class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+      </ul>
+
+      <div dropdown *ngIf="loggedIn()" class="dropdown" >
+
+        <a  dropdownToggle class="dropdown-toggle text-light">
+          {{authService.decodeToken?.unique_name | titlecase}}
+        </a>
+      
+        <ul *dropdownMenu class="dropdown-menu mt-3" >
+          <a class="dropdown-item" href="#"> <i class="fa fa-user"></i> Edit Profile</a>
+          <div class="dropdow-item"></div>
+          <a class="dropdown-item"(click) = "logout()"> <i class="fa fa-sign-out"></i> Logout</a>
+        </ul>
+      </div>
+
+      <form *ngIf="!loggedIn()" #loginForm="ngForm" class="d-flex" role="search" (ngSubmit)="login()">
+        <input class="form-control me-2" type="text" name="username" 
+        placeholder="Username" required [(ngModel)]="model.username">
+        <input class="form-control me-2" type="password" name="password" 
+        placeholder="Password" required [(ngModel)]="model.password">
+        <button [disabled]="!loginForm.valid" class="btn btn-success" type="">Login</button>
+        
+      </form>
+    </div>
+</nav>
