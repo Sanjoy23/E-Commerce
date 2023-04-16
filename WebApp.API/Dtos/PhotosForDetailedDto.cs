@@ -1,13 +1,11 @@
-﻿namespace WebApp.API.Models
+﻿namespace WebApp.API.Dtos
 {
-    public class Photo
+    public class PhotosForDetailedDto
     {
         public int Id { get; set; }
         public string? Url { get; set; }
         public string? Discription { get; set; }
         public DateTime? DateAdded { get; set; }
-        public bool IsMain { get; set; }
-        public User? User { get; set; }
-        public int? UserID { get; set; }
+        public bool? IsMain { get; set; }
     }
 }
